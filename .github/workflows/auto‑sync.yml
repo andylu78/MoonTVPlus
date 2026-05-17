@@ -1,0 +1,16 @@
+name: 自动同步原作者更新
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aormsby/Fork-Sync-With-Upstream-action@v2
+        with:
+          upstream_repository: mtvpls/MoonTVPlus
+          target_repository: andylu78/MoonTVPlus
+          target_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
